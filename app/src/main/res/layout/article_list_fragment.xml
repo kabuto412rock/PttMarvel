@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <variable
+            name="viewModel"
+            type="com.blogspot.zongjia.pttmarvel.viewmodel.ArticleListViewModel" />
+        <import type="android.text.TextUtils" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".ArticleListFragment">
+
+        <ImageView
+            android:id="@+id/img_loading_plane"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            app:layout_constraintBottom_toBottomOf="@+id/pagePostRecyclerView"
+            app:layout_constraintEnd_toEndOf="@+id/pagePostRecyclerView"
+            app:layout_constraintStart_toStartOf="@+id/pagePostRecyclerView"
+            app:layout_constraintTop_toTopOf="@+id/pagePostRecyclerView"
+            app:srcCompat="@drawable/ic_airplanemode_active_black_24dp" />
+
+        <Button
+            android:id="@+id/next_page_button"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="8dp"
+            android:layout_marginBottom="8dp"
+            android:enabled="@{!TextUtils.isEmpty(viewModel.mNextPageLink)}"
+            android:text="下一頁"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/choose_page_index_dialog_button"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <Button
+            android:id="@+id/previous_page_button"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginBottom="8dp"
+            android:enabled="@{!TextUtils.isEmpty(viewModel.mPreviousPageLink)}"
+            android:text="上一頁"
+            app:layout_constraintBottom_toBottomOf="@+id/next_page_button"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toEndOf="@+id/choose_page_index_dialog_button"
+            app:layout_constraintTop_toTopOf="@+id/next_page_button"
+            app:layout_constraintVertical_bias="0.0" />
+
+        <Button
+            android:id="@+id/choose_page_index_dialog_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="8dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.498"
+            app:layout_constraintStart_toStartOf="parent"
+            tools:text="1"
+            app:layout_constraintTop_toBottomOf="@+id/pagePostRecyclerView"
+            />
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/edit_query_layout"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="8dp"
+            android:hint="文章關鍵字"
+            app:layout_constraintEnd_toStartOf="@+id/query_button"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/edit_query_text"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:focusedByDefault="false"
+                android:focusableInTouchMode="true"
+                android:maxLines="1"
+                android:singleLine="true" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <Button
+            android:id="@+id/query_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="8dp"
+            android:text="搜尋"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/pagePostRecyclerView"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="8dp"
+            android:layout_marginBottom="8dp"
+            app:layout_constraintBottom_toTopOf="@+id/next_page_button"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/edit_query_layout"
+            android:scrollbars="vertical"
+            tools:listitem="@layout/article_list_item"/>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

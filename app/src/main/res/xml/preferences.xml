@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <PreferenceCategory
+        app:key="show_settings"
+        android:title="顯示">
+        <SwitchPreference
+            app:key="isShowImage"
+            app:title="載入圖片"
+            android:summary="觀看文章時，自動載入圖片"
+            android:defaultValue="true"/>
+
+        <SeekBarPreference
+                android:key = "contentFontSize"
+                android:title="文章字體大小"
+                android:summary="預設為25sp"
+                android:defaultValue = "25"
+                app:min = "0"
+                android:max = "50"
+                />
+
+    </PreferenceCategory>
+</PreferenceScreen>

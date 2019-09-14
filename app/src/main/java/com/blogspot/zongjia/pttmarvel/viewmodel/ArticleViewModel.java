@@ -1,0 +1,121 @@
+package com.blogspot.zongjia.pttmarvel.viewmodel;
+
+import android.app.Application;
+import android.util.Log;
+
+import androidx.lifecycle.AndroidViewModel;
+import androidx.lifecycle.LiveData;
+import androidx.lifecycle.MutableLiveData;
+import androidx.lifecycle.Transformations;
+import androidx.lifecycle.ViewModel;
+import androidx.preference.PreferenceManager;
+
+import com.blogspot.zongjia.pttmarvel.repo.PttRepo;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import io.reactivex.android.schedulers.AndroidSchedulers;
+import io.reactivex.disposables.CompositeDisposable;
+import io.reactivex.disposables.Disposable;
+import io.reactivex.schedulers.Schedulers;
+
+public class ArticleViewModel extends ViewModel {
+
+    private CompositeDisposable disposables = new CompositeDisposable();
+    private PttRepo repository = new PttRepo();
+
+    // 文章內容(長字串)
+    public MutableLiveData<String> postContent = new MutableLiveData<>();
+    // 推文列表
+    public MutableLiveData<String[]> postComments = new MutableLiveData<>();
+
+    // 推文列表Push板
+    public MutableLiveData<List<String>> postPushes = new MutableLiveData<>();
+    // 文章內容轉成顯示用的字串列表
+    public LiveData<ArrayList<String>> postContentBlocks = Transformations.map(postContent, (content -> {
+        /**
+         * 如何將原本文章切割成一行行文字
+         * 一行一個block
+         */
+        String[] lines = content.split("\n");
+        ArrayList<String> combinedList = new ArrayList<>();
+//        int count = 0;// count
+//        int maxCount = 6;
+//        StringBuffer buffer = new StringBuffer();
+//        for (String str :
+//                lines) {
+//            buffer.append(str.trim());
+//            buffer.append("\n");
+//            count++;
+//            if (count == maxCount) {
+//                combinedList.add(buffer.toString());
+//                buffer = new StringBuffer();
+//                count = 0;
+//            }
+//        }
+//        if (count != 0) {
+//            combinedList.add(buffer.toString());
+//        }
+        for (String str: lines) {
+           combinedList.add(str);
+        }
+        return combinedList;
+    }));
+
+    //文章標題
+    public MutableLiveData<String> postTitle = new MutableLiveData<>();
+    //文章圖片是否顯示
+    public MutableLiveData<Boolean> isShowImage = new MutableLiveData<>();
+    private String TAG = "ArticleViewModel";
+
+    public ArticleViewModel(boolean showImage) {
+        postComments.setValue(new String[0]);
+        postPushes.setValue(null);
+        isShowImage.setValue(showImage);
+    }
+
+    public void refreshSinglePost(String url) {
+        Disposable disposable = repository.getSinglePostRx(url)
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(pttSinglePost -> {
+                    String content = pttSinglePost.getContent();
+
+                    postContent.setValue(content);
+                    postTitle.setValue(pttSinglePost.getTitle());
+                    postPushes.setValue(pttSinglePost.getPushs());
+
+                    if (pttSinglePost.getPushs() == null) {
+                        return;
+                    }
+                    for(String push :pttSinglePost.getPushs()) {
+                        Log.d(TAG, "push: "+push);
+                    }
+//                    Log.d(TAG, "content@"+content+"@");
+//                    Log.d(TAG, "dateString@"+dateString+"@");
+//                    for (String comment :
+//                            pttSinglePost.getComments()
+//                    ) {
+//                        Log.d(TAG, "comments@" + comment);
+//
+//                    }
+                }, (throwable) -> {
+                    Log.d("ArticleViewModel", "錯誤丟出 : " + throwable.getMessage());
+                });
+
+        disposables.add(disposable);
+    }
+
+    public boolean ChangeShowImage() {
+        Boolean isShow = isShowImage.getValue();
+        isShowImage.setValue(!isShow);
+        return !isShow;
+    }
+
+    @Override
+    protected void onCleared() {
+        super.onCleared();
+        disposables.clear();
+    }
+}

@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_grpah"
+    app:startDestination="@id/articleListFragment">
+
+    <fragment
+        android:id="@+id/articleListFragment"
+        android:name="com.blogspot.zongjia.pttmarvel.ArticleListFragment"
+        android:label="Ptt麻佛"
+        tools:layout="@layout/article_list_fragment">
+        <action
+            android:id="@+id/action_articleListFragment_to_articleFragment"
+            app:destination="@id/articleFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/articleFragment"
+        android:name="com.blogspot.zongjia.pttmarvel.ArticleFragment"
+        android:label="article"
+        tools:layout="@layout/fragment_article">
+        <argument
+            android:name="postLink"
+            app:argType="string" />
+    </fragment>
+    <fragment
+        android:id="@+id/mySettingsFragment"
+        android:name="com.blogspot.zongjia.pttmarvel.MySettingsFragment"
+        android:label="設定" >
+    </fragment>
+    <action
+        android:id="@+id/action_global_mySettingsFragment"
+        app:destination="@id/mySettingsFragment"/>
+    <action
+        android:id="@+id/action_global_articleListFragment"
+        app:destination="@id/articleListFragment"
+        />
+    <fragment
+        android:id="@+id/kanbanManageFagment"
+        android:name="com.blogspot.zongjia.pttmarvel.KanbanManageFagment"
+        android:label="看板管理"
+        tools:layout="@layout/fragment_kanban_manage_fagment" />
+    <action
+        android:id="@+id/action_global_kanbanManageFagment"
+        app:destination="@id/kanbanManageFagment" />
+</navigation>

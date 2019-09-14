@@ -1,0 +1,179 @@
+<resources>
+    <string name="app_name">Ptt 麻佛</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="menu_comment_label">推文</string>
+
+    <string-array name="Language">
+        <item>English (US)</item>
+        <item>English (UK)</item>
+        <item>French (France)</item>
+        <item>Spanish (Spain)</item>
+        <item>Italian</item>
+    </string-array>
+
+    <string-array name="languageAlias">
+        <item>"en-US"</item>
+        <item>"en-GB"</item>
+        <item>"fr-FR"</item>
+        <item>"es-ES"</item>
+        <item>"it-IT"</item>
+    </string-array>
+
+    <string-array name="Voice">
+        <item>Male</item>
+        <item>Female</item>
+    </string-array>
+
+    <string-array name="VoiceAlias">
+        <item>"usenglishmale"</item>
+        <item>"usenglishfemale"</item>
+        <item>"ukenglishmale"</item>
+        <item>"ukenglishfemale"</item>
+        <item>"eurfrenchmale"</item>
+        <item>"eurfrenchfemale"</item>
+        <item>"eurspanishmale"</item>
+        <item>"eurspanishfemale"</item>
+        <item>"euritalianmale"</item>
+        <item>"euritalianfemale"</item>
+    </string-array>
+    <string-array name="VoiceData">
+        <item>0</item>
+        <item>1</item>
+    </string-array>
+
+    <!-- 熱門的看板-->
+    <string-array name="HotKanban">
+        <item>Gossiping</item>
+        <item>C_Chat</item>
+        <item>Baseball</item>
+        <item>NBA</item>
+        <item>HatePolitics</item>
+        <item>Stock</item>
+        <item>sex</item>
+        <item>Lifeismoney</item>
+        <item>movie</item>
+        <item>LoL</item>
+        <item>MobileComm</item>
+        <item>car</item>
+        <item>joke</item>
+        <item>marriage</item>
+        <item>Tech_Job</item>
+        <item>BabyMother</item>
+        <item>Boy-Girl</item>
+        <item>WomenTalk</item>
+        <item>Beauty</item>
+        <item>PC_Shopping</item>
+        <item>KoreaStar</item>
+        <item>e-shopping</item>
+        <item>Japan_Travel</item>
+        <item>creditcard</item>
+        <item>Examination</item>
+        <item>AllTogether</item>
+        <item>NSwitch</item>
+        <item>Kaohsiung</item>
+        <item>marvel</item>
+        <item>KR_Entertain</item>
+        <item>ToS</item>
+        <item>japanavgirls</item>
+        <item>Tainan</item>
+        <item>PokemonGO</item>
+        <item>TypeMoon</item>
+        <item>SportLottery</item>
+        <item>home-sale</item>
+        <item>KoreaDrama</item>
+        <item>Japandrama</item>
+        <item>MakeUp</item>
+        <item>Steam</item>
+        <item>SuperJunior</item>
+        <item>PlayStation</item>
+        <item>TaichungBun</item>
+        <item>Salary</item>
+        <item>BeautySalon</item>
+        <item>EAseries</item>
+        <item>MLB</item>
+        <item>FATE_GO</item>
+        <item>StupidClown</item>
+        <item>PCReDive</item>
+        <item>HardwareSale</item>
+        <item>CFantasy</item>
+        <item>Hearthstone</item>
+        <item>AC_In</item>
+        <item>BuyTogether</item>
+        <item>Food</item>
+        <item>MuscleBeach</item>
+        <item>TY_Research</item>
+        <item>CVS</item>
+        <item>ONE_PIECE</item>
+        <item>basketballTW</item>
+        <item>iOS</item>
+        <item>China-Drama</item>
+        <item>Hip-Hop</item>
+        <item>KoreanPop</item>
+        <item>biker</item>
+        <item>Hsinchu</item>
+        <item>Drama-Ticket</item>
+        <item>Elephants</item>
+        <item>FITNESS</item>
+        <item>YuanChuang</item>
+        <item>GBF</item>
+        <item>WOW</item>
+        <item>GetMarry</item>
+        <item>MayDay</item>
+        <item>TWICE</item>
+        <item>mobilesales</item>
+        <item>Headphone</item>
+        <item>Aviation</item>
+        <item>TaiwanDrama</item>
+        <item>Gamesale</item>
+        <item>MobilePay</item>
+        <item>fastfood</item>
+        <item>MH</item>
+        <item>watch</item>
+        <item>Bank_Service</item>
+        <item>lesbian</item>
+        <item>NY-Yankees</item>
+        <item>Badminton</item>
+        <item>Soft_Job</item>
+        <item>Palmar_Drama</item>
+        <item>forsale</item>
+        <item>streetfight</item>
+        <item>CarShop</item>
+        <item>cat</item>
+        <item>Gov_owned</item>
+        <item>part-time</item>
+        <item>graduate</item>
+        <item>feminine_sex</item>
+        <item>gay</item>
+        <item>Wanted</item>
+        <item>PuzzleDragon</item>
+        <item>give</item>
+        <item>Yoga_Lin</item>
+        <item>ITZY</item>
+        <item>Nogizaka46</item>
+        <item>DSLR</item>
+        <item>cookclub</item>
+        <item>BTS</item>
+        <item>Zastrology</item>
+        <item>E-appliance</item>
+        <item>nb-shopping</item>
+        <item>MacShop</item>
+        <item>DMM_GAMES</item>
+        <item>IZONE</item>
+        <item>Finance</item>
+        <item>Brand</item>
+        <item>FORMULA1</item>
+        <item>DC_SALE</item>
+        <item>Taoyuan</item>
+        <item>Military</item>
+        <item>BabyProducts</item>
+        <item>KanColle</item>
+        <item>HelpBuy</item>
+        <item>Guardians</item>
+        <item>PublicServan</item>
+        <item>Lions</item>
+        <item>Marvel</item>
+    </string-array>
+
+</resources>

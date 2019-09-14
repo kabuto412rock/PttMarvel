@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <variable
+            name="pttPagePost"
+            type="com.blogspot.zongjia.pttmarvel.model.postList.PttPagePost" />
+        <variable
+            name="clickListener"
+            type="com.blogspot.zongjia.pttmarvel.adapter.PagePostClickListener" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:onClick="@{()-> clickListener.onClick(pttPagePost)}"
+        >
+
+        <TextView
+            android:id="@+id/text_title"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="8dp"
+            android:layout_marginBottom="8dp"
+            app:layout_constraintBottom_toTopOf="@+id/text_author_name"
+            app:layout_constraintEnd_toStartOf="@+id/text_date"
+            app:layout_constraintStart_toEndOf="@+id/text_push_count"
+            app:layout_constraintTop_toTopOf="parent"
+            android:textSize="24sp"
+            tools:text="[創作] 折價舖6-1折價舖6-1折價舖6-1折價舖6-1折價舖6-1折價舖6-1"
+            android:text="@{pttPagePost.title}"/>
+
+        <TextView
+            android:id="@+id/text_push_count"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginBottom="8dp"
+            android:text="@{pttPagePost.pushCount}"
+            android:textSize="30sp"
+            app:layout_constraintBottom_toTopOf="@+id/label_author"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="26" />
+
+        <TextView
+            android:id="@+id/text_author_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginBottom="8dp"
+            android:text="@{pttPagePost.authorName}"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/label_author"
+            tools:text="kabuto543" />
+
+        <TextView
+            android:id="@+id/text_date"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="4dp"
+            android:layout_marginBottom="8dp"
+            android:text="@{pttPagePost.dateString}"
+            android:textSize="30sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="6/25" />
+
+        <TextView
+            android:id="@+id/label_author"
+            android:layout_width="32dp"
+            android:layout_height="21dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginBottom="8dp"
+            android:text="作者"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="@+id/text_push_count"
+            app:layout_constraintTop_toBottomOf="@+id/text_title" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
