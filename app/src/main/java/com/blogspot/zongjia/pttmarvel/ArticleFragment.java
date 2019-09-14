@@ -27,17 +27,13 @@ import com.blogspot.zongjia.pttmarvel.viewmodel.ArticleViewModel;
 import com.blogspot.zongjia.pttmarvel.viewmodel.ArticleViewModelFactory;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 
 public class ArticleFragment extends Fragment {
-    AppCompatActivity activity;
-    TextView appbarTitle;
-    private FragmentArticleBinding binding;
-    private ArticleViewModelFactory viewModelFactory;
+    private AppCompatActivity activity;
+    private TextView appbarTitle;
     private ArticleViewModel viewModel;
-    List<String> comments;
     PostContentBlockListAdapter adapter;
     SharedPreferences pref;
 
@@ -48,8 +44,8 @@ public class ArticleFragment extends Fragment {
         String postLink = ArticleFragmentArgs.fromBundle(getArguments()).getPostLink();
 
         // ViewModel & Binding initialized
-        binding = FragmentArticleBinding.inflate(inflater);
-        viewModelFactory = new ArticleViewModelFactory(isShowImageFromPreference());
+        FragmentArticleBinding binding = FragmentArticleBinding.inflate(inflater);
+        ArticleViewModelFactory viewModelFactory = new ArticleViewModelFactory(isShowImageFromPreference());
         viewModel = ViewModelProviders.of(this, viewModelFactory).get(ArticleViewModel.class);
         binding.setViewModel(viewModel);
         binding.setLifecycleOwner(this);
@@ -85,12 +81,6 @@ public class ArticleFragment extends Fragment {
             adapter.submitList(combinedList);
         });
 
-        // 推文列表
-        viewModel.postComments.observe(this, (commentsArray -> {
-            comments = Arrays.asList(commentsArray);
-        }));
-
-//          binding.postContentText
         // 刷新等等要移去ViewModel自身內部
         viewModel.refreshSinglePost(postLink);
 

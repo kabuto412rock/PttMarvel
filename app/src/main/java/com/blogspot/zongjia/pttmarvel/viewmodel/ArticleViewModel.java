@@ -1,14 +1,11 @@
 package com.blogspot.zongjia.pttmarvel.viewmodel;
 
-import android.app.Application;
 import android.util.Log;
 
-import androidx.lifecycle.AndroidViewModel;
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.Transformations;
 import androidx.lifecycle.ViewModel;
-import androidx.preference.PreferenceManager;
 
 import com.blogspot.zongjia.pttmarvel.repo.PttRepo;
 
@@ -27,11 +24,10 @@ public class ArticleViewModel extends ViewModel {
 
     // 文章內容(長字串)
     public MutableLiveData<String> postContent = new MutableLiveData<>();
-    // 推文列表
-    public MutableLiveData<String[]> postComments = new MutableLiveData<>();
 
     // 推文列表Push板
     public MutableLiveData<List<String>> postPushes = new MutableLiveData<>();
+
     // 文章內容轉成顯示用的字串列表
     public LiveData<ArrayList<String>> postContentBlocks = Transformations.map(postContent, (content -> {
         /**
@@ -40,25 +36,9 @@ public class ArticleViewModel extends ViewModel {
          */
         String[] lines = content.split("\n");
         ArrayList<String> combinedList = new ArrayList<>();
-//        int count = 0;// count
-//        int maxCount = 6;
-//        StringBuffer buffer = new StringBuffer();
-//        for (String str :
-//                lines) {
-//            buffer.append(str.trim());
-//            buffer.append("\n");
-//            count++;
-//            if (count == maxCount) {
-//                combinedList.add(buffer.toString());
-//                buffer = new StringBuffer();
-//                count = 0;
-//            }
-//        }
-//        if (count != 0) {
-//            combinedList.add(buffer.toString());
-//        }
-        for (String str: lines) {
-           combinedList.add(str);
+
+        for (String str : lines) {
+            combinedList.add(str);
         }
         return combinedList;
     }));
@@ -70,7 +50,6 @@ public class ArticleViewModel extends ViewModel {
     private String TAG = "ArticleViewModel";
 
     public ArticleViewModel(boolean showImage) {
-        postComments.setValue(new String[0]);
         postPushes.setValue(null);
         isShowImage.setValue(showImage);
     }
@@ -89,8 +68,8 @@ public class ArticleViewModel extends ViewModel {
                     if (pttSinglePost.getPushs() == null) {
                         return;
                     }
-                    for(String push :pttSinglePost.getPushs()) {
-                        Log.d(TAG, "push: "+push);
+                    for (String push : pttSinglePost.getPushs()) {
+                        Log.d(TAG, "push: " + push);
                     }
 //                    Log.d(TAG, "content@"+content+"@");
 //                    Log.d(TAG, "dateString@"+dateString+"@");
