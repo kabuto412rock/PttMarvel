@@ -3,4 +3,11 @@
     <color name="colorPrimary">#008577</color>
     <color name="colorPrimaryDark">#00574B</color>
     <color name="colorAccent">#D81B60</color>
+
+
+    <color name="commentBackground">@color/colorPrimary</color>
+    <color name="commentAuthorColor">#FFFFFF</color>
+    <color name="commentContentColor">#FFFFFF</color>
+    <color name="commentTimeColor">#FFFFFF</color>
+
 </resources>
