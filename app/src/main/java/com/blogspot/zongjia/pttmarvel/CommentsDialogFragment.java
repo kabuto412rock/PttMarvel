@@ -46,8 +46,8 @@ public class CommentsDialogFragment extends AppCompatDialogFragment {
         Bundle args = getArguments();
         ArrayList<String> comments = args.getStringArrayList("comments");
         ArrayList<PttPostPush> pushes = new ArrayList<>();
-        for (String comment : comments) {
-            comment = comment.trim();
+        for (int count = 0; count < comments.size(); count++) {
+            String comment = comments.get(count).trim();
             Log.d("push皆悉", comment);
             String[] chips = comment.split(" ");
 
@@ -60,17 +60,18 @@ public class CommentsDialogFragment extends AppCompatDialogFragment {
             String ip = "";
             if (ipSplit.length > 0) {
                 ip = ipSplit[ipSplit.length - 1];
+                comment = comment.split(time)[0];// 取ip前面的字段，如果是有顯示ip的看板時
+            }else {
+                //comment = // 因為Marvel板是屬於不會有顯示推文ip位址，但。。要如何分辨什麼時候需要解析IP？什麼時候不用...
             }
-            comment = comment.split(time)[0];// 取ip前面的字段
             String content = comment.substring(comment.indexOf(":")+1).trim();
-//            String content = "@W@"+comment+"!W!";
-            PttPostPush onePush = new PttPostPush(symbol, author, ip, time, content);
+            PttPostPush onePush = new PttPostPush(symbol, author, ip, time, content, count);
             pushes.add(onePush);
 //            Log.d("comment推", onePush.symbol);
 //            Log.d("comment名稱", onePush.author);
 //            Log.d("comment位址", onePush.ip);
 //            Log.d("comment時間", onePush.time);
-//            Log.d("comment內容", onePush.content);
+            Log.d("comment內容", "@?@?"+onePush.content);
         }
         adapter.submitList(pushes);
         recyclerView.setAdapter(adapter);

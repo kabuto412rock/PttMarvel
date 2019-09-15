@@ -10,11 +10,11 @@ public class PushDiffCallback extends DiffUtil.ItemCallback<PttPostPush> {
 
     @Override
     public boolean areItemsTheSame(@NonNull PttPostPush oldItem, @NonNull PttPostPush newItem) {
-        return oldItem.content + oldItem.ip == newItem.content + oldItem.ip;
+        return oldItem.floor == newItem.floor;
     }
 
     @Override
     public boolean areContentsTheSame(@NonNull PttPostPush oldItem, @NonNull PttPostPush newItem) {
-        return oldItem.content.equals(newItem.content);
+        return oldItem.floor == newItem.floor ;
     }
 }
