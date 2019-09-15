@@ -23,9 +23,11 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 
 import com.blogspot.zongjia.pttmarvel.adapter.PostContentBlockListAdapter;
 import com.blogspot.zongjia.pttmarvel.databinding.FragmentArticleBinding;
+import com.blogspot.zongjia.pttmarvel.model.post.PttPostPush;
 import com.blogspot.zongjia.pttmarvel.viewmodel.ArticleViewModel;
 import com.blogspot.zongjia.pttmarvel.viewmodel.ArticleViewModelFactory;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -124,14 +126,14 @@ public class ArticleFragment extends Fragment {
         switch (item.getItemId()) {
             case R.id.showCommentItem:
                 // 顯示dialog
-                List<String> comments = viewModel.postPushes.getValue();
+                List<PttPostPush> comments = viewModel.postPushes.getValue();
                 if (comments == null) {
                     comments = new ArrayList<>();
                 }
                 CommentsDialogFragment dialog = new CommentsDialogFragment(true);
 
                 Bundle args = new Bundle();
-                args.putStringArrayList("comments", new ArrayList<>(comments));
+                args.putSerializable("comments", (Serializable)comments);
                 dialog.setArguments(args);
 
                 if (getFragmentManager() != null)

@@ -18,6 +18,7 @@ import com.blogspot.zongjia.pttmarvel.adapter.PostPushBlockListAdapter;
 import com.blogspot.zongjia.pttmarvel.model.post.PttPostPush;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class CommentsDialogFragment extends AppCompatDialogFragment {
     private boolean isShowImage;
@@ -44,35 +45,7 @@ public class CommentsDialogFragment extends AppCompatDialogFragment {
 //        adapter.setShowImage(isShowImage);
 
         Bundle args = getArguments();
-        ArrayList<String> comments = args.getStringArrayList("comments");
-        ArrayList<PttPostPush> pushes = new ArrayList<>();
-        for (int count = 0; count < comments.size(); count++) {
-            String comment = comments.get(count).trim();
-            Log.d("push皆悉", comment);
-            String[] chips = comment.split(" ");
-
-            String symbol = chips[0];
-            String author = chips[1].replace(":", "");
-            String time = chips[chips.length - 2] + " " + chips[chips.length - 1];
-            String ipPattern = "\\d{2,3}\\.\\d{2,3}\\.\\d{2,3}\\.\\d{2,3}";
-
-            String[] ipSplit = chips[chips.length - 3].split(ipPattern);
-            String ip = "";
-            if (ipSplit.length > 0) {
-                ip = ipSplit[ipSplit.length - 1];
-                comment = comment.split(time)[0];// 取ip前面的字段，如果是有顯示ip的看板時
-            }else {
-                //comment = // 因為Marvel板是屬於不會有顯示推文ip位址，但。。要如何分辨什麼時候需要解析IP？什麼時候不用...
-            }
-            String content = comment.substring(comment.indexOf(":")+1).trim();
-            PttPostPush onePush = new PttPostPush(symbol, author, ip, time, content, count);
-            pushes.add(onePush);
-//            Log.d("comment推", onePush.symbol);
-//            Log.d("comment名稱", onePush.author);
-//            Log.d("comment位址", onePush.ip);
-//            Log.d("comment時間", onePush.time);
-            Log.d("comment內容", "@?@?"+onePush.content);
-        }
+        List<PttPostPush> pushes = (List<PttPostPush>) args.getSerializable("comments");
         adapter.submitList(pushes);
         recyclerView.setAdapter(adapter);
         return builder.create();

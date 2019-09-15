@@ -1,7 +1,6 @@
 package com.blogspot.zongjia.pttmarvel.model.post;
 
 import android.text.TextUtils;
-import android.util.Log;
 
 import java.util.List;
 
@@ -18,9 +17,9 @@ public class PttSinglePost {
     List<String> articleMetaValue;
 
     @Selector(value = "div.push")
-    List<String> pushs;
+    List<PttPostPush> pushs;
 
-    public List<String> getPushs() {
+    public List<PttPostPush> getPushs() {
         return pushs;
     }
 

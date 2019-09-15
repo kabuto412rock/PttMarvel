@@ -7,6 +7,7 @@ import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.Transformations;
 import androidx.lifecycle.ViewModel;
 
+import com.blogspot.zongjia.pttmarvel.model.post.PttPostPush;
 import com.blogspot.zongjia.pttmarvel.repo.PttRepo;
 
 import java.util.ArrayList;
@@ -26,7 +27,7 @@ public class ArticleViewModel extends ViewModel {
     public MutableLiveData<String> postContent = new MutableLiveData<>();
 
     // 推文列表Push板
-    public MutableLiveData<List<String>> postPushes = new MutableLiveData<>();
+    public MutableLiveData<List<PttPostPush>> postPushes = new MutableLiveData<>();
 
     // 文章內容轉成顯示用的字串列表
     public LiveData<ArrayList<String>> postContentBlocks = Transformations.map(postContent, (content -> {
@@ -68,17 +69,12 @@ public class ArticleViewModel extends ViewModel {
                     if (pttSinglePost.getPushs() == null) {
                         return;
                     }
-                    for (String push : pttSinglePost.getPushs()) {
-                        Log.d(TAG, "push: " + push);
+                    for (PttPostPush push : pttSinglePost.getPushs()) {
+                        Log.d(TAG, "作者: " + push.author);
+                        Log.d(TAG, "內容: " + push.content);
+                        Log.d(TAG, "IP時間: " + push.time);
                     }
-//                    Log.d(TAG, "content@"+content+"@");
-//                    Log.d(TAG, "dateString@"+dateString+"@");
-//                    for (String comment :
-//                            pttSinglePost.getComments()
-//                    ) {
-//                        Log.d(TAG, "comments@" + comment);
-//
-//                    }
+
                 }, (throwable) -> {
                     Log.d("ArticleViewModel", "錯誤丟出 : " + throwable.getMessage());
                 });
