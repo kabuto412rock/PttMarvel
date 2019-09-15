@@ -35,6 +35,16 @@
                 app:layout_constraintTop_toBottomOf="@+id/push_time">
 
                 <TextView
+                    android:id="@+id/push_floor"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="8dp"
+                    android:layout_marginBottom="8dp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    tools:text="1F" />
+
+                <TextView
                     android:id="@+id/push_symbol"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -67,16 +77,16 @@
                     android:layout_marginTop="8dp"
                     android:layout_marginEnd="8dp"
                     android:layout_marginBottom="8dp"
-                    android:text="@{pushBlock.content}"
                     android:background="@color/white"
+                    android:text="@{pushBlock.content}"
                     android:textColor="@color/black"
                     app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toStartOf="@+id/push_floor"
 
+                    app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/push_symbol"
                     app:layout_constraintVertical_bias="1.0"
-                    tools:text="說完，爺爺把一條鹽烤溪魚遞給了他。 " />
+                    tools:text="話剛完，爺爺便把一尾波士頓龍蝦遞給了他。 姆湯姆湯！" />
 
                 <TextView
                     android:id="@+id/push_time"
@@ -94,4 +104,5 @@
 
         </LinearLayout>
     </com.google.android.material.card.MaterialCardView>
+
 </layout>

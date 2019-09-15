@@ -46,6 +46,9 @@ public class CommentsDialogFragment extends AppCompatDialogFragment {
 
         Bundle args = getArguments();
         List<PttPostPush> pushes = (List<PttPostPush>) args.getSerializable("comments");
+        for (int i = 0; i < pushes.size(); i++) {
+            pushes.get(i).floor = i+1;
+        }
         adapter.submitList(pushes);
         recyclerView.setAdapter(adapter);
         return builder.create();
