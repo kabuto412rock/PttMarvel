@@ -2,6 +2,7 @@ package com.blogspot.zongjia.pttmarvel.adapter;
 
 import android.graphics.Color;
 import android.view.LayoutInflater;
+import android.view.View;
 import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
@@ -26,6 +27,7 @@ public class PostPushBlockListAdapter extends ListAdapter<PttPostPush, PostPushB
 
         void bind(PttPostPush push) {
             binding.setPushBlock(push);
+        binding.setBinding(binding);
             switch (push.symbol) {
                 case "→":
                     binding.pushSymbol.setTextColor(Color.BLACK);
@@ -39,6 +41,7 @@ public class PostPushBlockListAdapter extends ListAdapter<PttPostPush, PostPushB
             }
             binding.executePendingBindings();
         }
+
     }
 
     @NonNull

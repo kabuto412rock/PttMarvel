@@ -1,6 +1,7 @@
 package com.blogspot.zongjia.pttmarvel;
 
 import android.app.Dialog;
+import android.content.pm.ActivityInfo;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;

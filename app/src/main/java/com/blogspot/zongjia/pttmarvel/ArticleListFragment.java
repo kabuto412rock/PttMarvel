@@ -3,6 +3,7 @@ package com.blogspot.zongjia.pttmarvel;
 import android.app.Activity;
 import android.content.Context;
 import android.content.SharedPreferences;
+import android.content.pm.ActivityInfo;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.util.Log;
@@ -42,6 +43,11 @@ public class ArticleListFragment extends Fragment
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
                              @Nullable Bundle savedInstanceState) {
+        if (getActivity() != null) {
+            // 螢幕可以自由擺
+            getActivity().setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_USER);
+        }
+
         binding = ArticleListFragmentBinding.inflate(inflater);
 
         viewModel = ViewModelProviders.of(this).get(ArticleListViewModel.class);

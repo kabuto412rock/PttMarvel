@@ -2,6 +2,7 @@ package com.blogspot.zongjia.pttmarvel;
 
 import android.content.Context;
 import android.content.SharedPreferences;
+import android.content.pm.ActivityInfo;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.util.Log;
@@ -14,6 +15,7 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
@@ -43,8 +45,13 @@ public class ArticleFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        String postLink = ArticleFragmentArgs.fromBundle(getArguments()).getPostLink();
+        if (getActivity() != null) {
 
+            // 螢幕只能直擺
+            getActivity().setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
+        }
+
+        String postLink = ArticleFragmentArgs.fromBundle(getArguments()).getPostLink();
         // ViewModel & Binding initialized
         FragmentArticleBinding binding = FragmentArticleBinding.inflate(inflater);
         ArticleViewModelFactory viewModelFactory = new ArticleViewModelFactory(isShowImageFromPreference());

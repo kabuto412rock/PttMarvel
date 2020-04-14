@@ -6,6 +6,7 @@ import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory;
 
 public class RetrofitManager {
     private static RetrofitManager mInstance = new RetrofitManager();
+
     private Retrofit retrofit;
     private PttService pttService;
 
@@ -17,6 +18,7 @@ public class RetrofitManager {
                 .build();
 
         pttService = retrofit.create(PttService.class);
+
     }
 
     public static PttService getPttService() {

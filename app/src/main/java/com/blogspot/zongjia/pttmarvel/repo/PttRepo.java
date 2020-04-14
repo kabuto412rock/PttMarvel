@@ -5,8 +5,6 @@ import com.blogspot.zongjia.pttmarvel.api.RetrofitManager;
 import com.blogspot.zongjia.pttmarvel.model.post.PttSinglePost;
 import com.blogspot.zongjia.pttmarvel.model.postList.PttPage;
 
-import java.util.prefs.Preferences;
-
 import io.reactivex.Single;
 
 public class PttRepo {

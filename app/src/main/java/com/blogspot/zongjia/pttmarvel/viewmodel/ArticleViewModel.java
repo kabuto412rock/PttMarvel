@@ -72,7 +72,7 @@ public class ArticleViewModel extends ViewModel {
                     for (PttPostPush push : pttSinglePost.getPushs()) {
                         Log.d(TAG, "作者: " + push.author);
                         Log.d(TAG, "內容: " + push.content);
-                        Log.d(TAG, "IP時間: " + push.time);
+//                        Log.d(TAG, "IP時間: " + push.getTime());
                     }
 
                 }, (throwable) -> {
